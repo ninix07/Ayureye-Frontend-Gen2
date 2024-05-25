@@ -1,0 +1,113 @@
+/* Drop a file */
+/* 
+.container-drop{
+    margin-left: 150px;
+    margin-right: 150px;
+    color: white;
+    display: flex;
+    flex-direction: column  ;
+}
+
+
+*/
+
+.container-drop {
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px;
+}
+
+.container-drop {
+  max-width: 1000px;
+  margin: auto;
+  padding: 10px;
+  display: flex;
+}
+
+.container-drop > div > button {
+  width: 50%;
+  height: 85px;
+  background-color: #2b2f4f;
+  border: none;
+  border-radius: 46px;
+  font-size: 57px;
+  color: white;
+  font-weight: 500;
+  opacity: 80%;
+  width: auto;
+}
+
+.box-drop {
+  background-color: #d9d9d9;
+  height: 400px;
+  width: 900px;
+  border-radius: 40px;
+}
+
+.box-drop {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.box-drop > div > img {
+  width: 284px;
+  height: auto;
+}
+
+.dropfile_button {
+  width: 390px;
+}
+
+.dropfile_button > span {
+  font-size: 50px;
+  font-weight: bold;
+  line-height: 76px;
+  letter-spacing: 2px;
+}
+
+.box-drop > button {
+  width: 50%;
+  height: 85px;
+  background-color: #2b2f4f;
+  border: none;
+  border-radius: 46px;
+  font-size: 57px;
+  color: white;
+  font-weight: 500;
+  opacity: 80%;
+  width: auto;
+}
+
+/* Upload License */
+
+.license-dropfile {
+  background: #abb5b5;
+  margin-top: 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.license-dropfile > span {
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 55px;
+  letter-spacing: 1px;
+}
+
+.license-dropfile > img {
+  width: 100px;
+  height: auto;
+}
+
+.box-items {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.box-items > * {
+  margin: 10px;
+}

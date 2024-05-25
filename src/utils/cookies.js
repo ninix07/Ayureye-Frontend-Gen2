@@ -1,0 +1,1 @@
+export const cookieArray = ['JWT-Access', 'JWT-Refresh', 'User-type', 'User-id', 'User'];
