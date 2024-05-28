@@ -16,7 +16,7 @@ const PatientSignup = () => {
   const [password, setPassword] = useState("");
   const [createPatient, { isLoading, error, data }] =
     useCreatePatientMutation();
-  const auth1 = useSelector((state) => state.auth);
+  const auth1 = useSelector((state) => state.auth.isAuthenticated);
   const [errMsg, setErrMsg] = useState("");
   const [patientCreated, setPatientCreated] = useState(false);
   const dispatch = useDispatch();
@@ -28,11 +28,12 @@ const PatientSignup = () => {
       username: userName,
       password: password,
       email: userEmail,
+      user_type: "Pt",
     };
     try {
       const response = await createPatient(data).unwrap();
-      const token = response.token; // Extract token from the response
-      dispatch({ type: "auth/setToken", payload: token }); // Dispatch an action to store the token
+      const token = response.token;
+      dispatch({ type: "auth/setToken", payload: token });
       console.log("Patient created successfully:", response);
       console.log(response);
       setPatientCreated(true);

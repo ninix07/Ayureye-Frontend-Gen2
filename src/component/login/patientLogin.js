@@ -9,44 +9,47 @@ import { useCookies } from "react-cookie";
 import { cookieArray } from "../../utils/cookies";
 import { logout } from "../../utils/logout";
 import { useHistory } from "react-router-dom";
-
+import { useLoginPatientMutation } from "../../services/patientServices";
+import { useDispatch, useSelector } from "react-redux";
 function PatientLogin() {
-  const navigate = useHistory();
-  const auth = useContext(AuthContext);
-  const [, setCookie, removeCookie] = useCookies(cookieArray);
+  const history = useHistory();
+  const dispatch = useDispatch();
 
   // State Variable
-  const [userEmail, setUserEmail] = useState("");
+  const [userName, setUserName] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const [loginPatient, { isLoading, error, data }] = useLoginPatientMutation();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   // Handling request error
   const [errMsg, setErrMsg] = useState("");
 
   useEffect(() => {
-    if (auth.auth) {
-      setIsLoggedIn(true);
-    } else {
-      setIsLoggedIn(false);
+    if (isAuthenticated) {
+      history.push("/");
     }
-  }, [auth]);
+  }, [isAuthenticated]);
 
   //Login and logout function
-  const login = async () => {
-    let data = await signin(userEmail, userPassword, auth, setCookie);
-
-    setIsLoggedIn(data !== null);
-    if (data == null) {
-      setErrMsg("username or password incorrect");
+  const login = async (e) => {
+    const data = {
+      password: userPassword,
+      username: userName,
+    };
+    try {
+      const response = await loginPatient(data).unwrap();
+      dispatch({ type: "auth/setToken" });
+      console.log("Patient created successfully:", response);
+      console.log(isAuthenticated);
+      console.log(response);
+    } catch (err) {
+      console.error("Failed to register patient: ", err);
+      setErrMsg(err.message);
     }
-    navigate.push("/dashboard");
   };
 
   // Logout function
-  const signout = () => {
-    logout(auth, removeCookie);
-    setIsLoggedIn(false);
-  };
+  const signout = () => {};
 
   // Form Submit handle function
   const handleSubmit = async (e) => {
@@ -113,10 +116,10 @@ function PatientLogin() {
                             required />  */}
                   <input
                     type="text"
-                    placeholder="Email"
+                    placeholder="Username"
                     id="username"
-                    value={userEmail}
-                    onChange={(e) => setUserEmail(e.target.value)}
+                    value={userName}
+                    onChange={(e) => setUserName(e.target.value)}
                     autoComplete="off"
                     required
                   />
