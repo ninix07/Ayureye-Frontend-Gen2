@@ -1,15 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import { patientApi } from "./services/patientServices";
+import { userApi } from "./services/userServices";
 import authReducer from "./Reducer/authReducer";
+import { inferenceApi } from "./services/inferenceservices";
 const store = configureStore({
   reducer: {
     auth: authReducer,
-    [patientApi.reducerPath]: patientApi.reducer,
+    [userApi.reducerPath]: userApi.reducer,
+    [inferenceApi.reducerPath]: inferenceApi.reducer,
   },
 
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(patientApi.middleware),
+    getDefaultMiddleware().concat(userApi.middleware),
 });
 
 setupListeners(store.dispatch);

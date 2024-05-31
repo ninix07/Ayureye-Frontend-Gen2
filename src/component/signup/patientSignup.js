@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/AuthProvider";
-import { useCreatePatientMutation } from "../../services/patientServices"; // Ensure this path is correct
+import { useCreateUserMutation } from "../../services/userServices"; // Ensure this path is correct
 import "./signup.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
@@ -14,9 +14,8 @@ const PatientSignup = () => {
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [createPatient, { isLoading, error, data }] =
-    useCreatePatientMutation();
-  const auth1 = useSelector((state) => state.auth.isAuthenticated);
+  const [createPatient, { isLoading, error, data }] = useCreateUserMutation();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const [errMsg, setErrMsg] = useState("");
   const [patientCreated, setPatientCreated] = useState(false);
   const dispatch = useDispatch();
@@ -43,10 +42,10 @@ const PatientSignup = () => {
     }
   };
   useEffect(() => {
-    if (auth1) {
+    if (isAuthenticated) {
       history.push("/");
     }
-  }, [auth1]);
+  }, [isAuthenticated]);
 
   return (
     <>

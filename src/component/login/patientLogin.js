@@ -9,7 +9,7 @@ import { useCookies } from "react-cookie";
 import { cookieArray } from "../../utils/cookies";
 import { logout } from "../../utils/logout";
 import { useHistory } from "react-router-dom";
-import { useLoginPatientMutation } from "../../services/patientServices";
+import { useLoginUserMutation } from "../../services/userServices";
 import { useDispatch, useSelector } from "react-redux";
 function PatientLogin() {
   const history = useHistory();
@@ -19,7 +19,7 @@ function PatientLogin() {
   const [userName, setUserName] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [loginPatient, { isLoading, error, data }] = useLoginPatientMutation();
+  const [loginPatient, { isLoading, error, data }] = useLoginUserMutation();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   // Handling request error
   const [errMsg, setErrMsg] = useState("");
@@ -39,17 +39,17 @@ function PatientLogin() {
     try {
       const response = await loginPatient(data).unwrap();
       dispatch({ type: "auth/setToken" });
-      console.log("Patient created successfully:", response);
+      console.log("Patient logged successfully:", response);
       console.log(isAuthenticated);
       console.log(response);
     } catch (err) {
-      console.error("Failed to register patient: ", err);
+      console.error("Failed to login patient: ", err);
       setErrMsg(err.message);
     }
   };
 
   // Logout function
-  const signout = () => {};
+  // const signout = () => {};
 
   // Form Submit handle function
   const handleSubmit = async (e) => {
@@ -63,38 +63,18 @@ function PatientLogin() {
 
   return (
     <>
-      {isLoggedIn ? (
-        <div>
-          <div>Yes you are logged in</div>
-          <button onClick={signout}> Sign Out</button>
-          <br />
-          <Link to="/homepage">Homepage</Link>
+      {/*  Login form code */}
+      <div class="wrapper">
+        {/* <p ref={errRef} class={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>  */}
+        <div class="title-text">
+          <div class="title login">Patient Login</div>
         </div>
-      ) : (
-        // <div>
-        //   <span>Login</span>
-        //   <form>
-        //     Email: <input type="text"/><br />
-        //     Password: <input type="password" onChange={(e)=>setUserEmail(e.target.value)}/><br />
-        //     <button onClick={handleSubmit} onChange={(e)=> setUserPassword(e.target.value)}>Click to login</button>
-        //   </form>
-        // <h3><Link to="/signup/doctor">Doctor Signup</Link></h3>
-        // <h3><Link to="/signup/patient">Patient Signup</Link></h3>
-        // <h3><Link to="/homepage">Homepage</Link></h3>
-        // </div>
-
-        // Login form code
-        <div class="wrapper">
-          {/* <p ref={errRef} class={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>  */}
-          <div class="title-text">
-            <div class="title login">Patient Login</div>
-          </div>
-          <div class="form-container glogo-box">
-            <img src={gLogo} alt="logo" />
-            <span class="center glogo-text">Continue with Google</span>
-          </div>
-          <div class="form-container">
-            {/* <div class="slide-controls">
+        <div class="form-container glogo-box">
+          <img src={gLogo} alt="logo" />
+          <span class="center glogo-text">Continue with Google</span>
+        </div>
+        <div class="form-container">
+          {/* <div class="slide-controls">
                 <input type="radio" name="slide" id="login" checked />
                 <label for="login" class="slide login">Login</label>
                 
@@ -103,10 +83,10 @@ function PatientLogin() {
                 
                 <div class="login-slider-tab"></div>
             </div> */}
-            <div class="form-inner">
-              <form onSubmit={handleSubmit} class="login">
-                <div class="field">
-                  {/* <input 
+          <div class="form-inner">
+            <form onSubmit={handleSubmit} class="login">
+              <div class="field">
+                {/* <input 
                             type="text" 
                             placeholder="Email" 
                             id="username"
@@ -114,53 +94,52 @@ function PatientLogin() {
                             autoComplete="off"
                             onChange={(e)=> setUser(e.target.value)}
                             required />  */}
-                  <input
-                    type="text"
-                    placeholder="Username"
-                    id="username"
-                    value={userName}
-                    onChange={(e) => setUserName(e.target.value)}
-                    autoComplete="off"
-                    required
-                  />
-                </div>
-                <div class="field">
-                  {/* <input type="password" 
+                <input
+                  type="text"
+                  placeholder="Username"
+                  id="username"
+                  value={userName}
+                  onChange={(e) => setUserName(e.target.value)}
+                  autoComplete="off"
+                  required
+                />
+              </div>
+              <div class="field">
+                {/* <input type="password" 
                             id="password"
                             placeholder="Password" 
                             onChange={(e)=>setPwd(e.target.value)}
                             value={pwd}
                             required />  */}
-                  <input
-                    type="password"
-                    id="password"
-                    placeholder="Password"
-                    value={userPassword}
-                    onChange={(e) => setUserPassword(e.target.value)}
-                    required
-                  />
-                </div>
-                <div class="field btn">
-                  <div class="btn-layer"></div>
-                  <input type="submit" value="Login" />
-                </div>
-                <div class="pass-link">
-                  {/* <a href="#">Forgot Password</a> */}
-                </div>
-                <div class="signup-link">
-                  Not a member?{" "}
-                  <a
-                    href="/signup/patient"
-                    style={{ textDecoration: "none", color: "#fa4299" }}
-                  >
-                    Signup now
-                  </a>
-                </div>
-              </form>
-            </div>
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="Password"
+                  value={userPassword}
+                  onChange={(e) => setUserPassword(e.target.value)}
+                  required
+                />
+              </div>
+              <div class="field btn">
+                <div class="btn-layer"></div>
+                <input type="submit" value="Login" />
+              </div>
+              <div class="pass-link">
+                {/* <a href="#">Forgot Password</a> */}
+              </div>
+              <div class="signup-link">
+                Not a member?{" "}
+                <a
+                  href="/signup/patient"
+                  style={{ textDecoration: "none", color: "#fa4299" }}
+                >
+                  Signup now
+                </a>
+              </div>
+            </form>
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 }
