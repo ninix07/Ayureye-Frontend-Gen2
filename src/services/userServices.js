@@ -3,7 +3,7 @@ import customBaseQuery from "./customBaseQuery";
 import { UserLoginURL, UserSignupURL } from "../constant/constants";
 
 export const userApi = createApi({
-  reducerPath: "api",
+  reducerPath: "User",
   baseQuery: customBaseQuery,
   endpoints: (builder) => ({
     createUser: builder.mutation({

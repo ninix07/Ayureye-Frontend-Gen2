@@ -3,7 +3,7 @@ import customBaseQuery from "./customBaseQuery";
 import { ImageInferenceURL, getImageURL } from "../constant/constants";
 
 export const inferenceApi = createApi({
-  reducerPath: "api",
+  reducerPath: "Inference",
   baseQuery: customBaseQuery,
   endpoints: (builder) => ({
     sendImage: builder.mutation({

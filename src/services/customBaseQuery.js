@@ -6,8 +6,9 @@ const customBaseQuery = async (args, api, extraOptions) => {
     baseUrl: baseURL,
     prepareHeaders: (headers, { getState }) => {
       const token = localStorage.getItem("token");
+      console.log(token);
       if (token) {
-        headers.set("Authorization", `Bearer ${token}`);
+        headers.set("Authorization", `Token ${token}`);
       }
       return headers;
     },
