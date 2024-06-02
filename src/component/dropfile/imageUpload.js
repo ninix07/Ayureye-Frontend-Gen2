@@ -5,8 +5,9 @@ import {
   useSendImageMutation,
 } from "../../services/inferenceservices";
 import { useSelector } from "react-redux";
-
-const ImagePreview = () => {
+import Upload from "../../image/upload.png";
+import "./imageUpload.css";
+const ImageUpload = () => {
   const [image, setImage] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
   const [sendImage, { isLoading, error, data }] = useSendImageMutation();
@@ -29,37 +30,60 @@ const ImagePreview = () => {
   const submitImage = async (e) => {
     e.preventDefault();
     if (!isAuthenticated) {
-      console.log("Please Login first");
+      alert("Please Login first");
     } else {
       var Image = new FormData();
       Image.append("image", image);
       try {
         const response = await sendImage(Image).unwrap();
         console.log(response);
-        console.log("Succesfully upload file");
+        alert("Succesfully upload file");
       } catch (err) {
         console.log(err);
-        console.log("Couldn't upload image");
+        alert("Couldn't upload image");
       }
     }
+    setImage(null);
+    setImageUrl(null);
+    URL.revokeObjectURL(imageUrl);
   };
 
   return (
-    <div>
-      <input type="file" accept="image/*" onChange={handleImageChange} />
+    <div className="container">
+      {!imageUrl && (
+        <div className="inputContainer">
+          <img src={Upload} className="UploadImage" />
+          <div>
+            <p className="UploadText">Please Upload your file here!</p>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+              className="Input"
+            />
+          </div>
+        </div>
+      )}
       {imageUrl && (
         <div>
           <img
             src={imageUrl}
             alt="Preview"
             style={{ width: "300px", marginTop: "20px" }}
+            className="ImageDisplay"
           />
-          <button onClick={handleImageRemove}>Remove Image</button>
-          <button onClick={submitImage}>Submit Image</button>
+          <div className="btnContainer">
+            <button onClick={handleImageRemove} className="btn">
+              Remove Image
+            </button>
+            <button onClick={submitImage} className="btn">
+              Submit Image
+            </button>
+          </div>
         </div>
       )}
     </div>
   );
 };
 
-export default ImagePreview;
+export default ImageUpload;

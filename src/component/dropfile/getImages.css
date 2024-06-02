@@ -1,0 +1,29 @@
+.Remove{
+    display: none;
+}
+
+.ImageDataContainer{
+    display: flex;
+    flex-direction: column;
+}
+.ImageContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 3%;
+    flex: 1;
+    margin: 2%;
+    background-color: #043559;
+    padding: 2%;
+    border-radius: 25px;
+}
+.image{
+    width: auto;
+    border-radius: 20px;
+}
+.name{
+    font-size: 1.2rem;
+    width: 30rem;
+    color:white
+}
