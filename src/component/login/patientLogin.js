@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { useContext } from "react";
-import AuthContext from "../../context/AuthProvider";
 import gLogo from "../../image/gLogo.png";
 import "./login.css";
-import { signin } from "../../utils/login";
-import { useCookies } from "react-cookie";
-import { cookieArray } from "../../utils/cookies";
-import { logout } from "../../utils/logout";
 import { useHistory } from "react-router-dom";
 import { useLoginUserMutation } from "../../services/userServices";
 import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function PatientLogin() {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -44,7 +39,7 @@ function PatientLogin() {
       console.log(response);
     } catch (err) {
       console.error("Failed to login patient: ", err);
-      setErrMsg(err.message);
+      toast.error(err.data?.detail || "An error occurred");
     }
   };
 
@@ -63,6 +58,7 @@ function PatientLogin() {
 
   return (
     <>
+      <ToastContainer />
       {/*  Login form code */}
       <div class="wrapper">
         {/* <p ref={errRef} class={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>  */}

@@ -3,14 +3,21 @@ import logo from "../../image/AyurEye.png";
 import "./navbar.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { userApi } from "../../services/userServices";
 function Navbar() {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth.isAuthenticated);
   const signout = async () => {
+    console.log(user_type);
     localStorage.removeItem("token");
     dispatch({ type: "auth/logout" });
   };
 
+  const user_type = useSelector(
+    (state) =>
+      state[userApi.reducerPath].queries["reloadUser(undefined)"]?.data
+        ?.user_type
+  );
   return (
     <header>
       <img src={logo} alt="logo" />
@@ -32,6 +39,9 @@ function Navbar() {
             <>
               <li className="listitem">
                 <Link to="/dashboard">DashBoard</Link>
+              </li>
+              <li className="listitem">
+                <Link to="/upload">Image Upload</Link>
               </li>
               <li>
                 <button className="signout-button" onClick={signout}>

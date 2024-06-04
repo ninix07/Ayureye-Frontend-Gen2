@@ -4,14 +4,22 @@ import {
   useGetImageQuery,
   useSendImageMutation,
 } from "../../services/inferenceservices";
+import { userApi } from "../../services/userServices";
 import { useSelector } from "react-redux";
 import Upload from "../../image/upload.png";
 import "./imageUpload.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const ImageUpload = () => {
   const [image, setImage] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
   const [sendImage, { isLoading, error, data }] = useSendImageMutation();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const user_id = useSelector(
+    (state) =>
+      state[userApi.reducerPath].queries["reloadUser(undefined)"]?.data?.id
+  );
+
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     if (file && file.type.startsWith("image/")) {
@@ -34,13 +42,15 @@ const ImageUpload = () => {
     } else {
       var Image = new FormData();
       Image.append("image", image);
+      Image.append("patient_id", "2");
+      console.log(Image.patient_id);
       try {
         const response = await sendImage(Image).unwrap();
         console.log(response);
-        alert("Succesfully upload file");
+        toast.success("Succesfully upload file");
       } catch (err) {
         console.log(err);
-        alert("Couldn't upload image");
+        toast.error(err.data?.detail || "An Error Occured");
       }
     }
     setImage(null);
@@ -50,6 +60,7 @@ const ImageUpload = () => {
 
   return (
     <div className="container">
+      <ToastContainer />
       {!imageUrl && (
         <div className="inputContainer">
           <img src={Upload} className="UploadImage" />
@@ -73,10 +84,10 @@ const ImageUpload = () => {
             className="ImageDisplay"
           />
           <div className="btnContainer">
-            <button onClick={handleImageRemove} className="btn">
+            <button onClick={handleImageRemove} className="btnUpload">
               Remove Image
             </button>
-            <button onClick={submitImage} className="btn">
+            <button onClick={submitImage} className="btnUpload">
               Submit Image
             </button>
           </div>

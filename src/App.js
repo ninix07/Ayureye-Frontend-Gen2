@@ -14,18 +14,19 @@ import PatientSignup from "./component/signup/patientSignup";
 import Homepage from "./component/homepage/homepage";
 import Dashboard from "./component/dashboard/dashboard";
 import Profile from "./component/profile/profile";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import AuthContext from "./context/AuthProvider";
 import Navbar from "./component/navbar/navbar";
 import PatientProfileDashboard from "./component/dashboard/patientProfileDashboard";
 import { PatientXRay } from "./component/dashboard/patientxray";
 import ImageUpload from "./component/dropfile/imageUpload";
 import GetImages from "./component/dropfile/GetImages";
+import { useSelector } from "react-redux";
+import { useReloadUserQuery } from "./services/userServices";
 //importing auth
 
 function App() {
-  const auth = useContext(AuthContext);
-
+  const { error, data, isLoading } = useReloadUserQuery();
   return (
     <Router>
       <Navbar />

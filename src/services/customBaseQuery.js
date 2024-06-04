@@ -16,6 +16,7 @@ const customBaseQuery = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions);
   if (result?.data?.token) {
     localStorage.setItem("token", result.data.token);
+    localStorage.setItem("user", result.data.user.id);
   }
 
   return result;

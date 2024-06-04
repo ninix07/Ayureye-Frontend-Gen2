@@ -1,6 +1,10 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import customBaseQuery from "./customBaseQuery";
-import { UserLoginURL, UserSignupURL } from "../constant/constants";
+import {
+  UserLoginURL,
+  UserSignupURL,
+  getUserDetail,
+} from "../constant/constants";
 
 export const userApi = createApi({
   reducerPath: "User",
@@ -20,7 +24,17 @@ export const userApi = createApi({
         body: UserData,
       }),
     }),
+    reloadUser: builder.query({
+      query: () => ({
+        url: getUserDetail,
+        method: "Get",
+      }),
+    }),
   }),
 });
 
-export const { useCreateUserMutation, useLoginUserMutation } = userApi;
+export const {
+  useCreateUserMutation,
+  useLoginUserMutation,
+  useReloadUserQuery,
+} = userApi;

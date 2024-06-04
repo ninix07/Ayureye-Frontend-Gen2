@@ -5,6 +5,8 @@ import { useCreateUserMutation } from "../../services/userServices"; // Ensure t
 import "./signup.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const PatientSignup = () => {
   const auth = useContext(AuthContext);
   const history = useHistory();
@@ -16,8 +18,6 @@ const PatientSignup = () => {
   const [password, setPassword] = useState("");
   const [createPatient, { isLoading, error, data }] = useCreateUserMutation();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const [errMsg, setErrMsg] = useState("");
-  const [patientCreated, setPatientCreated] = useState(false);
   const dispatch = useDispatch();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,14 +31,11 @@ const PatientSignup = () => {
     };
     try {
       const response = await createPatient(data).unwrap();
-      const token = response.token;
-      dispatch({ type: "auth/setToken", payload: token });
+      dispatch({ type: "auth/setToken" });
       console.log("Patient created successfully:", response);
-      console.log(response);
-      setPatientCreated(true);
     } catch (err) {
       console.error("Failed to register patient: ", err);
-      setErrMsg(err.message);
+      toast.error(err.data?.detail || "An error occurred");
     }
   };
   useEffect(() => {
@@ -49,6 +46,7 @@ const PatientSignup = () => {
 
   return (
     <>
+      <ToastContainer />
       <div className="wrapper">
         <div className="title-text">
           <div className="title signup">
@@ -58,7 +56,6 @@ const PatientSignup = () => {
 
         <div className="form-container">
           <div className="form-inner">
-            {errMsg && <p className="error">{errMsg}</p>}
             <form onSubmit={handleSubmit} className="signup">
               <div className="field">
                 <input

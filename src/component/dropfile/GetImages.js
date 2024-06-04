@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-import {
-  useLazyGetImageQuery,
-  useSendImageMutation,
-} from "../../services/inferenceservices";
-import { useSelector } from "react-redux";
+import { useLazyGetImageQuery } from "../../services/inferenceservices";
 import { imagebaseURL } from "../../constant/constants";
 import "./getImages.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const GetImages = () => {
   const [triggerGetImage, { data, error, isLoading }] = useLazyGetImageQuery();
   const [imageData, setImageData] = useState([]);
@@ -19,8 +17,8 @@ const GetImages = () => {
       console.log(imageData);
       console.log("Succesfully got Images file");
     } catch (err) {
-      console.log(err);
-      console.log("Couldn't get image");
+      console.error("Failed to register doctor: ", err);
+      toast.error(err.data?.detail || "An Error Occured");
     }
   };
   const handleImageClick = (image) => {
@@ -28,9 +26,10 @@ const GetImages = () => {
   };
   return (
     <div>
+      <ToastContainer />
       <button
         onClick={GetImage}
-        className={imageData.length ? "Remove" : "btn"}
+        className={imageData.length ? "Remove" : "btnUpload"}
       >
         Get All Image
       </button>
