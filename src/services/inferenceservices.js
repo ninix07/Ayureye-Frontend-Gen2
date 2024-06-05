@@ -4,6 +4,7 @@ import {
   ImageInferenceURL,
   ImageSaveURL,
   getImageURL,
+  getPredictions,
 } from "../constant/constants";
 
 export const inferenceApi = createApi({
@@ -23,6 +24,12 @@ export const inferenceApi = createApi({
         method: "GET",
       }),
     }),
+    getInferenceImage: builder.query({
+      query: () => ({
+        url: getPredictions,
+        method: "GET",
+      }),
+    }),
     runInference: builder.mutation({
       query: (Image) => ({
         url: ImageInferenceURL,
@@ -33,4 +40,9 @@ export const inferenceApi = createApi({
   }),
 });
 
-export const { useSendImageMutation, useLazyGetImageQuery } = inferenceApi;
+export const {
+  useSendImageMutation,
+  useGetImageQuery,
+  useGetInferenceImageQuery,
+  useRunInferenceMutation,
+} = inferenceApi;

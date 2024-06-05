@@ -1,0 +1,60 @@
+.doctorDashboard{
+    width: 900px;    
+    margin: auto;
+    padding: 10px;
+    display: flex   ;
+    flex-direction: column;
+    min-height:90vh ;
+}
+.DoctorBlock{
+    display: flex;
+    flex-direction: row;
+    align-self: start;
+    justify-self: start;
+    margin-bottom: 20px;
+}
+.buttons{
+    display:flex;
+    gap: 20%;
+    justify-content: center;
+    margin-bottom: 20px;
+    
+}
+.DoctorUsername{
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+    color: aqua;
+}
+.btnUpload{
+    height: 30%;
+}
+.patientContainer{
+    display: flex;
+    flex-direction: row;
+    background-color: #007bff;
+    padding:5px;
+    border-radius: 7px;
+}
+.patientContainer:hover{
+    cursor: pointer;
+}
+.id,.username{
+    flex:1;
+}
+.header{
+    flex: 1;
+    font: 1.4rem;
+}
+.patientHeadingContainer{
+    display: flex;
+    flex-direction: row;
+    background-color: #007bff;
+    margin-bottom: 10px;
+    padding:10px;
+    border-radius: 7px;
+}
+.InferenceHandler{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

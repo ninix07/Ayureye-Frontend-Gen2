@@ -47,84 +47,86 @@ const PatientSignup = () => {
   return (
     <>
       <ToastContainer />
-      <div className="wrapper">
-        <div className="title-text">
-          <div className="title signup">
-            <h3>Patient SignUp</h3>
+      <div className="main">
+        <div className="wrapper">
+          <div className="title-text">
+            <div className="title signup">
+              <h3>Patient SignUp</h3>
+            </div>
           </div>
-        </div>
 
-        <div className="form-container">
-          <div className="form-inner">
-            <form onSubmit={handleSubmit} className="signup">
-              <div className="field">
-                <input
-                  type="text"
-                  placeholder="First Name"
-                  value={firstName}
-                  onChange={(e) => {
-                    setFirstName(e.target.value);
-                  }}
-                  required
-                />
-              </div>
+          <div className="form-container">
+            <div className="form-inner">
+              <form onSubmit={handleSubmit} className="signup">
+                <div className="field">
+                  <input
+                    type="text"
+                    placeholder="First Name"
+                    value={firstName}
+                    onChange={(e) => {
+                      setFirstName(e.target.value);
+                    }}
+                    required
+                  />
+                </div>
 
-              <div className="field">
-                <input
-                  type="text"
-                  placeholder="Last Name"
-                  value={lastName}
-                  onChange={(e) => {
-                    setLastName(e.target.value);
-                  }}
-                  required
-                />
-              </div>
-              <div className="field">
-                <input
-                  type="text"
-                  placeholder="Email Address"
-                  value={userEmail}
-                  onChange={(e) => {
-                    setUserEmail(e.target.value);
-                  }}
-                  required
-                />
-              </div>
-              <div className="field">
-                <input
-                  type="text"
-                  placeholder="Username"
-                  value={userName}
-                  onChange={(e) => {
-                    setUserName(e.target.value);
-                  }}
-                  required
-                />
-              </div>
+                <div className="field">
+                  <input
+                    type="text"
+                    placeholder="Last Name"
+                    value={lastName}
+                    onChange={(e) => {
+                      setLastName(e.target.value);
+                    }}
+                    required
+                  />
+                </div>
+                <div className="field">
+                  <input
+                    type="text"
+                    placeholder="Email Address"
+                    value={userEmail}
+                    onChange={(e) => {
+                      setUserEmail(e.target.value);
+                    }}
+                    required
+                  />
+                </div>
+                <div className="field">
+                  <input
+                    type="text"
+                    placeholder="Username"
+                    value={userName}
+                    onChange={(e) => {
+                      setUserName(e.target.value);
+                    }}
+                    required
+                  />
+                </div>
 
-              <div className="field">
-                <input
-                  type="password" // Change to password type
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
-                  required
-                />
-              </div>
-              {/* Submit Button */}
-              <div className="field btn">
-                <div className="btn-layer"></div>
-                <input type="submit" value="Signup" disabled={isLoading} />
-              </div>
-            </form>
+                <div className="field">
+                  <input
+                    type="password" // Change to password type
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
+                    required
+                  />
+                </div>
+                {/* Submit Button */}
+                <div className="field btn">
+                  <div className="btn-layer"></div>
+                  <input type="submit" value="Signup" disabled={isLoading} />
+                </div>
+              </form>
+            </div>
           </div>
+          <span className="small-text center no-padding">
+            Already have account? <Link to="/login/patient">Login Here</Link>
+          </span>
         </div>
-        <span className="small-text center no-padding">
-          Already have account? <Link to="/login/patient">Login Here</Link>
-        </span>
       </div>
     </>
   );

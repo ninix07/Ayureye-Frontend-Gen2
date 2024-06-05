@@ -1,22 +1,27 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import AuthContext from "../../context/AuthProvider";
 import "./dashboard.css";
-import report from "../../image/report2.png";
+import { userApi } from "../../services/userServices";
+import { useSelector } from "react-redux";
+import DoctorDashboard from "./doctorDashboard";
+import PatientDashboard from "./patientDashboard";
 import { SidbarDashboard } from "./aside";
-import { useGetAllPatientQuery } from "../../services/patientServices";
 const linkStyle = {
   textDecoration: "none",
   color: "#9799ab",
 };
 
 function Dashboard() {
-  const auth = useContext(AuthContext);
-  const { isLoading, error, data } = useGetAllPatientQuery();
-
+  const user_type = useSelector(
+    (state) =>
+      state[userApi.reducerPath].queries["reloadUser(undefined)"]?.data
+        ?.user_type
+  );
   return (
     <>
-      <div className="grid-container"></div>
+      <div className="grid-container">
+        <SidbarDashboard />
+        {user_type == "Dr" ? <DoctorDashboard /> : <PatientDashboard />}
+      </div>
     </>
   );
 }

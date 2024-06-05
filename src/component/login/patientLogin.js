@@ -60,17 +60,18 @@ function PatientLogin() {
     <>
       <ToastContainer />
       {/*  Login form code */}
-      <div class="wrapper">
-        {/* <p ref={errRef} class={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>  */}
-        <div class="title-text">
-          <div class="title login">Patient Login</div>
-        </div>
-        <div class="form-container glogo-box">
-          <img src={gLogo} alt="logo" />
-          <span class="center glogo-text">Continue with Google</span>
-        </div>
-        <div class="form-container">
-          {/* <div class="slide-controls">
+      <div className="main">
+        <div class="wrapper">
+          {/* <p ref={errRef} class={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>  */}
+          <div class="title-text">
+            <div class="title login">Patient Login</div>
+          </div>
+          <div class="form-container glogo-box">
+            <img src={gLogo} alt="logo" />
+            <span class="center glogo-text">Continue with Google</span>
+          </div>
+          <div class="form-container">
+            {/* <div class="slide-controls">
                 <input type="radio" name="slide" id="login" checked />
                 <label for="login" class="slide login">Login</label>
                 
@@ -79,10 +80,10 @@ function PatientLogin() {
                 
                 <div class="login-slider-tab"></div>
             </div> */}
-          <div class="form-inner">
-            <form onSubmit={handleSubmit} class="login">
-              <div class="field">
-                {/* <input 
+            <div class="form-inner">
+              <form onSubmit={handleSubmit} class="login">
+                <div class="field">
+                  {/* <input 
                             type="text" 
                             placeholder="Email" 
                             id="username"
@@ -90,49 +91,50 @@ function PatientLogin() {
                             autoComplete="off"
                             onChange={(e)=> setUser(e.target.value)}
                             required />  */}
-                <input
-                  type="text"
-                  placeholder="Username"
-                  id="username"
-                  value={userName}
-                  onChange={(e) => setUserName(e.target.value)}
-                  autoComplete="off"
-                  required
-                />
-              </div>
-              <div class="field">
-                {/* <input type="password" 
+                  <input
+                    type="text"
+                    placeholder="Username"
+                    id="username"
+                    value={userName}
+                    onChange={(e) => setUserName(e.target.value)}
+                    autoComplete="off"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  {/* <input type="password" 
                             id="password"
                             placeholder="Password" 
                             onChange={(e)=>setPwd(e.target.value)}
                             value={pwd}
                             required />  */}
-                <input
-                  type="password"
-                  id="password"
-                  placeholder="Password"
-                  value={userPassword}
-                  onChange={(e) => setUserPassword(e.target.value)}
-                  required
-                />
-              </div>
-              <div class="field btn">
-                <div class="btn-layer"></div>
-                <input type="submit" value="Login" />
-              </div>
-              <div class="pass-link">
-                {/* <a href="#">Forgot Password</a> */}
-              </div>
-              <div class="signup-link">
-                Not a member?{" "}
-                <a
-                  href="/signup/patient"
-                  style={{ textDecoration: "none", color: "#fa4299" }}
-                >
-                  Signup now
-                </a>
-              </div>
-            </form>
+                  <input
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                    value={userPassword}
+                    onChange={(e) => setUserPassword(e.target.value)}
+                    required
+                  />
+                </div>
+                <div class="field btn">
+                  <div class="btn-layer"></div>
+                  <input type="submit" value="Login" />
+                </div>
+                <div class="pass-link">
+                  {/* <a href="#">Forgot Password</a> */}
+                </div>
+                <div class="signup-link">
+                  Not a member?{" "}
+                  <a
+                    href="/signup/patient"
+                    style={{ textDecoration: "none", color: "#fa4299" }}
+                  >
+                    Signup now
+                  </a>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>

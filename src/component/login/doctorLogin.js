@@ -53,22 +53,23 @@ function DoctorLogin() {
   return (
     <>
       <ToastContainer />
-      <div class="wrapper">
-        <p class={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">
-          {errMsg}
-        </p>
-        <div class="title-text">
-          <div class="title login">DoctorLogin</div>
-        </div>
-        <div class="form-container glogo-box">
-          <img src={gLogo} alt="google logo" />
-          <span class="center glogo-text">Continue with Google</span>
-        </div>
-        <div class="form-container">
-          <div class="form-inner">
-            <form onSubmit={handleSubmit} class="login">
-              <div class="field">
-                {/* <input 
+      <div className="main">
+        <div class="wrapper">
+          <p class={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">
+            {errMsg}
+          </p>
+          <div class="title-text">
+            <div class="title login">DoctorLogin</div>
+          </div>
+          <div class="form-container glogo-box">
+            <img src={gLogo} alt="google logo" />
+            <span class="center glogo-text">Continue with Google</span>
+          </div>
+          <div class="form-container">
+            <div class="form-inner">
+              <form onSubmit={handleSubmit} class="login">
+                <div class="field">
+                  {/* <input 
                             type="text" 
                             placeholder="Email" 
                             id="username"
@@ -76,49 +77,50 @@ function DoctorLogin() {
                             autoComplete="off"
                             onChange={(e)=> setUser(e.target.value)}
                             required />  */}
-                <input
-                  type="text"
-                  placeholder="Username"
-                  id="username"
-                  value={userName}
-                  onChange={(e) => setUserName(e.target.value)}
-                  autoComplete="off"
-                  required
-                />
-              </div>
-              <div class="field">
-                {/* <input type="password" 
+                  <input
+                    type="text"
+                    placeholder="Username"
+                    id="username"
+                    value={userName}
+                    onChange={(e) => setUserName(e.target.value)}
+                    autoComplete="off"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  {/* <input type="password" 
                             id="password"
                             placeholder="Password" 
                             onChange={(e)=>setPwd(e.target.value)}
                             value={pwd}
                             required />  */}
-                <input
-                  type="password"
-                  id="password"
-                  placeholder="Password"
-                  value={userPassword}
-                  onChange={(e) => setUserPassword(e.target.value)}
-                  required
-                />
-              </div>
-              <div class="field btn">
-                <div class="btn-layer"></div>
-                <input type="submit" value="Login" />
-              </div>
-              <div class="pass-link">
-                <a href="#">Forgot Password</a>
-              </div>
-              <div class="signup-link">
-                Not a member?{" "}
-                <a
-                  href="/signup/doctor"
-                  style={{ textDecoration: "none", color: "#fa4299" }}
-                >
-                  Signup now
-                </a>
-              </div>
-            </form>
+                  <input
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                    value={userPassword}
+                    onChange={(e) => setUserPassword(e.target.value)}
+                    required
+                  />
+                </div>
+                <div class="field btn">
+                  <div class="btn-layer"></div>
+                  <input type="submit" value="Login" />
+                </div>
+                <div class="pass-link">
+                  <a href="#">Forgot Password</a>
+                </div>
+                <div class="signup-link">
+                  Not a member?{" "}
+                  <a
+                    href="/signup/doctor"
+                    style={{ textDecoration: "none", color: "#fa4299" }}
+                  >
+                    Signup now
+                  </a>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>

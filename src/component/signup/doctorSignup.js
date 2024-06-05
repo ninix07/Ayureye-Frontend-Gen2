@@ -67,150 +67,152 @@ function DoctorSignup() {
   return (
     <>
       <ToastContainer />
-      <div className="wrapper">
-        <div className="title-text">
-          <div className="title signup">
-            <h3>Doctor SignUp</h3>
+      <div className="main">
+        <div className="wrapper">
+          <div className="title-text">
+            <div className="title signup">
+              <h3>Doctor SignUp</h3>
+            </div>
           </div>
-        </div>
-        <div className="form-container glogo-box">
-          <img src={gLogo} alt="google logo" />
-          <span className="center glogo-text">Continue with Google</span>
-        </div>
-        <div className="form-container">
-          <div className="form-inner">
-            <form onSubmit={handleSubmit} className="signup">
-              <div className="field">
-                <input
-                  type="text"
-                  placeholder="First Name"
-                  value={firstName}
-                  onChange={(e) => {
-                    setFirstName(e.target.value);
-                  }}
-                  required
-                />
-              </div>
-              <div className="field">
-                <input
-                  type="text"
-                  placeholder="*Middle Name"
-                  value={middleName}
-                  onChange={(e) => {
-                    setMiddleName(e.target.value);
-                  }}
-                  required
-                />
-              </div>
-              <div className="field">
-                <input
-                  type="text"
-                  placeholder="Last Name"
-                  value={lastName}
-                  onChange={(e) => {
-                    setLastName(e.target.value);
-                  }}
-                  required
-                />
-              </div>
-              <div className="field">
-                <input
-                  type="text"
-                  placeholder="Email Address"
-                  value={userEmail}
-                  onChange={(e) => {
-                    setUserEmail(e.target.value);
-                  }}
-                  required
-                />
-              </div>
-              <div className="field">
-                <input
-                  type="text"
-                  placeholder="Username"
-                  value={userName}
-                  onChange={(e) => {
-                    setUserName(e.target.value);
-                  }}
-                  required
-                />
-              </div>
-              <div className="field">
-                <input
-                  type="text"
-                  placeholder="Address"
-                  value={address}
-                  onChange={(e) => {
-                    setAddress(e.target.value);
-                  }}
-                  required
-                />
-              </div>
-              <div className="field">
-                <input
-                  type="number"
-                  placeholder="Contact Number"
-                  value={contact}
-                  onChange={(e) => {
-                    setContact(e.target.value);
-                  }}
-                  required
-                />
-              </div>
-              <div className="field">
-                <input
-                  type="number"
-                  placeholder="License Number"
-                  value={licenseNumber}
-                  onChange={(e) => {
-                    setLicenseNumber(e.target.value);
-                  }}
-                  required
-                />
-              </div>
-              <div className="field">
-                <input
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
-                  required
-                />
-              </div>
-              <div className="field">
-                <input
-                  type="password"
-                  placeholder="Confirm Password"
-                  value={matchPassword}
-                  onChange={(e) => {
-                    setMatchPassword(e.target.value);
-                  }}
-                  required
-                />
-              </div>
+          <div className="form-container glogo-box">
+            <img src={gLogo} alt="google logo" />
+            <span className="center glogo-text">Continue with Google</span>
+          </div>
+          <div className="form-container">
+            <div className="form-inner">
+              <form onSubmit={handleSubmit} className="signup">
+                <div className="field">
+                  <input
+                    type="text"
+                    placeholder="First Name"
+                    value={firstName}
+                    onChange={(e) => {
+                      setFirstName(e.target.value);
+                    }}
+                    required
+                  />
+                </div>
+                <div className="field">
+                  <input
+                    type="text"
+                    placeholder="*Middle Name"
+                    value={middleName}
+                    onChange={(e) => {
+                      setMiddleName(e.target.value);
+                    }}
+                    required
+                  />
+                </div>
+                <div className="field">
+                  <input
+                    type="text"
+                    placeholder="Last Name"
+                    value={lastName}
+                    onChange={(e) => {
+                      setLastName(e.target.value);
+                    }}
+                    required
+                  />
+                </div>
+                <div className="field">
+                  <input
+                    type="text"
+                    placeholder="Email Address"
+                    value={userEmail}
+                    onChange={(e) => {
+                      setUserEmail(e.target.value);
+                    }}
+                    required
+                  />
+                </div>
+                <div className="field">
+                  <input
+                    type="text"
+                    placeholder="Username"
+                    value={userName}
+                    onChange={(e) => {
+                      setUserName(e.target.value);
+                    }}
+                    required
+                  />
+                </div>
+                <div className="field">
+                  <input
+                    type="text"
+                    placeholder="Address"
+                    value={address}
+                    onChange={(e) => {
+                      setAddress(e.target.value);
+                    }}
+                    required
+                  />
+                </div>
+                <div className="field">
+                  <input
+                    type="number"
+                    placeholder="Contact Number"
+                    value={contact}
+                    onChange={(e) => {
+                      setContact(e.target.value);
+                    }}
+                    required
+                  />
+                </div>
+                <div className="field">
+                  <input
+                    type="number"
+                    placeholder="License Number"
+                    value={licenseNumber}
+                    onChange={(e) => {
+                      setLicenseNumber(e.target.value);
+                    }}
+                    required
+                  />
+                </div>
+                <div className="field">
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
+                    required
+                  />
+                </div>
+                <div className="field">
+                  <input
+                    type="password"
+                    placeholder="Confirm Password"
+                    value={matchPassword}
+                    onChange={(e) => {
+                      setMatchPassword(e.target.value);
+                    }}
+                    required
+                  />
+                </div>
 
-              {/* Dynamic Upload License */}
-              {/* <DropUploadLicense /> */}
-              {/* Static Upload License */}
-              {/* <div className="license-dropfile">
+                {/* Dynamic Upload License */}
+                {/* <DropUploadLicense /> */}
+                {/* Static Upload License */}
+                {/* <div className="license-dropfile">
                         <img src={uploadPic} />
                         <span>Upload License</span>
                      </div>
                   */}
 
-              {/* Submit Button */}
-              <div className="field btn">
-                <div className="btn-layer"></div>
-                <input type="submit" value="Signup" />
-              </div>
-            </form>
+                {/* Submit Button */}
+                <div className="field btn">
+                  <div className="btn-layer"></div>
+                  <input type="submit" value="Signup" />
+                </div>
+              </form>
+            </div>
           </div>
+          <span className="small-text center no-padding">
+            Already have account? <Link to="/login/doctor">Login Here</Link>
+          </span>
         </div>
-        <span className="small-text center no-padding">
-          Already have account? <Link to="/login/doctor">Login Here</Link>
-        </span>
       </div>
     </>
   );

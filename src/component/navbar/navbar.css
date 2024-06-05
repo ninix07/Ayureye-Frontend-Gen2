@@ -54,14 +54,7 @@ body{
     color: white;
     text-decoration: none;
   }
-  
-  span {
-    font-size: 50px;
-    font-weight: bold;
-    line-height: 200px;
-    letter-spacing: 5px;
-    font-family: Outfit;
-  }
+
   
   .dropdown {
     position: relative;

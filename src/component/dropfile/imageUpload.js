@@ -26,7 +26,7 @@ const ImageUpload = () => {
       setImage(file);
       setImageUrl(URL.createObjectURL(file));
     } else {
-      alert("Please select a valid image file.");
+      toast.error("Please select a valid image file.");
     }
   };
 
@@ -38,7 +38,7 @@ const ImageUpload = () => {
   const submitImage = async (e) => {
     e.preventDefault();
     if (!isAuthenticated) {
-      alert("Please Login first");
+      toast.error("Please Login first");
     } else {
       var Image = new FormData();
       Image.append("image", image);

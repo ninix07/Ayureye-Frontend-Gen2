@@ -5,5 +5,6 @@ export const UserLoginURL = `${baseURL}accounts/login/`;
 export const ImageInferenceURL = `${baseURL}inference/run_inference/`;
 export const ImageSaveURL = `${baseURL}inference/save_image/`;
 export const getImageURL = `${baseURL}inference/get_images/`;
+export const getPredictions = `${baseURL}inference/get_predictions/`;
 export const getUserDetail = `${baseURL}accounts/user_profile/`;
 export const allPatients = `${baseURL}inference/get_patients/`;

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useGetImageQuery } from "../../services/inferenceservices";
+import { useGetInferenceImageQuery } from "../../services/inferenceservices";
 import { imagebaseURL } from "../../constant/constants";
 import "./getImages.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-const GetImages = () => {
-  const { data, error, isLoading } = useGetImageQuery();
+const GetInferencedImages = () => {
+  const { data, error, isLoading } = useGetInferenceImageQuery();
   const [imageData, setImageData] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -39,4 +39,4 @@ const GetImages = () => {
   );
 };
 
-export default GetImages;
+export default GetInferencedImages;
