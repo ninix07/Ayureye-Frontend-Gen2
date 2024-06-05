@@ -40,6 +40,7 @@ const PatientSignup = () => {
   };
   useEffect(() => {
     if (isAuthenticated) {
+      window.location.reload();
       history.push("/");
     }
   }, [isAuthenticated]);

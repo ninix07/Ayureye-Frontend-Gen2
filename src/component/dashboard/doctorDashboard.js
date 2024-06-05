@@ -38,6 +38,7 @@ const DoctorDashboard = () => {
       <div className="allPatientContainer">
         <div className="patientHeadingContainer">
           <p className="header">Patient Id</p>
+          <p className="header"> Patient Name</p>
           <p className="header"> Patient Username</p>
         </div>
         {data && data.length
@@ -49,6 +50,9 @@ const DoctorDashboard = () => {
                   onClick={() => checkoutPatient(patinet.id)}
                 >
                   <p className="id">{patinet.id}</p>
+                  <p className="id">
+                    {patinet.first_name + " " + patinet.last_name}
+                  </p>
                   <p className="username">{patinet.username}</p>
                 </div>
               );

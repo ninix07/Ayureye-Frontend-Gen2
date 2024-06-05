@@ -18,6 +18,7 @@ function DoctorLogin() {
 
   useEffect(() => {
     if (isAuthenticated) {
+      window.location.reload();
       navigate.push("/");
     }
   }, [isAuthenticated]);

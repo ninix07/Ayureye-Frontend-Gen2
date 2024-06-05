@@ -3,8 +3,8 @@ import "./dashboard.css";
 import { userApi } from "../../services/userServices";
 import { useSelector } from "react-redux";
 import DoctorDashboard from "./doctorDashboard";
-import PatientDashboard from "./patientDashboard";
 import { SidbarDashboard } from "./aside";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 const linkStyle = {
   textDecoration: "none",
   color: "#9799ab",
@@ -19,8 +19,17 @@ function Dashboard() {
   return (
     <>
       <div className="grid-container">
-        <SidbarDashboard />
-        {user_type == "Dr" ? <DoctorDashboard /> : <PatientDashboard />}
+        {user_type == "Dr" ? (
+          <>
+            <SidbarDashboard />
+            <DoctorDashboard />
+          </>
+        ) : (
+          <p>
+            You are not authnticated.Please go back to{" "}
+            <Link to="/">Home Page.</Link>
+          </p>
+        )}
       </div>
     </>
   );

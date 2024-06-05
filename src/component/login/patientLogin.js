@@ -21,6 +21,7 @@ function PatientLogin() {
 
   useEffect(() => {
     if (isAuthenticated) {
+      window.location.reload();
       history.push("/");
     }
   }, [isAuthenticated]);

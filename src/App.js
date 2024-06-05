@@ -24,6 +24,8 @@ import GetImages from "./component/dropfile/GetImages";
 import { useSelector } from "react-redux";
 import { useReloadUserQuery } from "./services/userServices";
 import GetInferencedImages from "./component/dropfile/GetInferencedImage";
+import GetImagesPatient from "./component/dropfile/GetImagesByPatient";
+import PatientPredictions from "./component/dashboard/PatientPredictions";
 //importing auth
 
 function App() {
@@ -53,7 +55,9 @@ function App() {
         </Route>
         <Route path="/dashboard/patient/:id">
           <PatientXRay />
-          {/* <Homepage/> */}
+        </Route>
+        <Route path="/patient/predictions/:id">
+          <PatientPredictions />
         </Route>
         <Route path="/dashboard">
           <Dashboard />
@@ -63,6 +67,9 @@ function App() {
         </Route>
         <Route path="/get">
           <GetImages />
+        </Route>
+        <Route path="/images/patient/:id">
+          <GetImagesPatient />
         </Route>
         <Route path="/all_inferences">
           <GetInferencedImages />

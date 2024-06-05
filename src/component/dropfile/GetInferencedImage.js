@@ -17,16 +17,24 @@ const GetInferencedImages = () => {
       <ToastContainer />
 
       <div className="ImageDataContainer">
-        {data && data.length
+        {data && Array.isArray(data) && data.length
           ? data.map((image, key) => {
               return (
                 <div
                   className="ImageContainer"
                   onClick={() => handleImageClick(image)}
+                  key={key}
                 >
-                  <p className="name">{image.name}</p>
+                  <p>
+                    {image.infection_type}:{image.confidence}
+                  </p>
                   <img
-                    src={imagebaseURL + image.img_file}
+                    src={imagebaseURL + "media/" + image.original_image_file}
+                    alt={key}
+                    className="image"
+                  />
+                  <img
+                    src={imagebaseURL + "media/" + image.predicted_image_file}
                     alt={key}
                     className="image"
                   />

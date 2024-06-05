@@ -4,19 +4,19 @@ import "./navbar.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userApi } from "../../services/userServices";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 function Navbar() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const auth = useSelector((state) => state.auth.isAuthenticated);
   const signout = async () => {
-    console.log(user_type);
     localStorage.removeItem("token");
     dispatch({ type: "auth/logout" });
+    history.pushState("/");
   };
 
-  const user_type = useSelector(
-    (state) =>
-      state[userApi.reducerPath].queries["reloadUser(undefined)"]?.data
-        ?.user_type
+  const user = useSelector(
+    (state) => state[userApi.reducerPath].queries["reloadUser(undefined)"]?.data
   );
   return (
     <header>
@@ -37,12 +37,21 @@ function Navbar() {
           {/* <li className="listitem"><Link to="#">Signup</Link></li> */}
           {auth ? (
             <>
-              <li className="listitem">
-                <Link to="/dashboard">DashBoard</Link>
-              </li>
-              <li className="listitem">
-                <Link to="/upload">Image Upload</Link>
-              </li>
+              {user && user.user_type === "Dr" && (
+                <li className="listitem">
+                  <Link to="/dashboard">DashBoard</Link>
+                </li>
+              )}
+              {user && user.user_type === "Pt" && (
+                <>
+                  <li className="listitem">
+                    <Link to="/upload">Image Upload</Link>
+                  </li>
+                  <li className="listitem">
+                    <Link to={`/images/patient/${user.id}`}>Get Images</Link>
+                  </li>
+                </>
+              )}
               <li>
                 <button className="signout-button" onClick={signout}>
                   SignOut

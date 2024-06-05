@@ -10,7 +10,7 @@ import Upload from "../../image/upload.png";
 import "./imageUpload.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-const ImageUpload = () => {
+const ImageUpload = ({ onPress }) => {
   const [image, setImage] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
   const [sendImage, { isLoading, error, data }] = useSendImageMutation();
@@ -48,6 +48,7 @@ const ImageUpload = () => {
         const response = await sendImage(Image).unwrap();
         console.log(response);
         toast.success("Succesfully upload file");
+        onPress();
       } catch (err) {
         console.log(err);
         toast.error(err.data?.detail || "An Error Occured");

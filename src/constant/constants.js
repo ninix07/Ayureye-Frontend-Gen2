@@ -1,5 +1,5 @@
 export const baseURL = "http://127.0.0.1:8000/";
-export const imagebaseURL = "http://127.0.0.1:8000";
+export const imagebaseURL = "http://127.0.0.1:8000/";
 export const UserSignupURL = `${baseURL}accounts/signup/`;
 export const UserLoginURL = `${baseURL}accounts/login/`;
 export const ImageInferenceURL = `${baseURL}inference/run_inference/`;
@@ -8,3 +8,5 @@ export const getImageURL = `${baseURL}inference/get_images/`;
 export const getPredictions = `${baseURL}inference/get_predictions/`;
 export const getUserDetail = `${baseURL}accounts/user_profile/`;
 export const allPatients = `${baseURL}inference/get_patients/`;
+export const getParticularImageURL = `${baseURL}inference/get_images_for_a_patient/`;
+export const getParticularPredictionURL = `${baseURL}inference/get_predictions_for_a_patient/`;
