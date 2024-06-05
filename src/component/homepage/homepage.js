@@ -44,11 +44,6 @@ function Homepage() {
         </div>
 
         {/* <!-- Get Started Button --> */}
-        <div className="container">
-          <div className="startedBox">
-            <button className="getstartedbutton">GET STARTED</button>
-          </div>
-        </div>
 
         {/* Dropzone for TB file upload */}
 

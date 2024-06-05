@@ -58,3 +58,53 @@
     align-items: center;
     justify-content: center;
 }
+.inputUploadContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.Or {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+.Or::before, .Or::after {
+    content: '';
+    flex: 3;
+    border-bottom: 1px solid ;
+}
+
+.Or:not(:empty)::before {
+    margin-right: .25em;
+}
+
+.Or:not(:empty)::after {
+    margin-left: .25em;
+}
+.linkText{
+    color: white;
+    text-decoration: none;
+}
+.infectionsTable {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.infectionsTable .tableRow {
+    display: table-row;
+}
+
+.infectionsTable .tableHeader, .infectionsTable .tableCell {
+    display: table-cell;
+    padding: 8px;
+    text-align: left;
+}
+
+.infectionsTable .tableHeader {
+    font-weight: bold;
+}

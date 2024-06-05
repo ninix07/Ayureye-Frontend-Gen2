@@ -10,8 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import ReactLoading from "react-loading";
 import { imagebaseURL } from "../../constant/constants";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-
-const UPLOAD_XRAY = "/prediction_api/image/";
+import "./doctorDashboard.css"; // Ensure this is correctly imported
 
 export const PatientXRay = () => {
   const [image, setImage] = useState(null);
@@ -89,19 +88,28 @@ export const PatientXRay = () => {
           ) : (
             <>
               {!imageUrl && !data && (
-                <div className="inputContainer">
-                  <img src={Upload} className="UploadImage" alt="Upload" />
-                  <div>
-                    <p className="UploadText">Please Upload your file here!</p>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageChange}
-                      className="Input"
-                    />
-                    <p className="UploadText">OR</p>
-                    <p className="UploadText">
-                      <Link to={`/patient/predictions/${patient_id}`}>
+                <div className="inputUploadContainer">
+                  <div className="inputContainer">
+                    <img src={Upload} className="UploadImage" alt="Upload" />
+                    <div>
+                      <p className="UploadText">
+                        Please Upload your file here!
+                      </p>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageChange}
+                        className="Input"
+                      />
+                    </div>
+                  </div>
+                  <div className="">
+                    <p className="Or">OR</p>
+                    <p className="linkText">
+                      <Link
+                        to={`/patient/predictions/${patient_id}`}
+                        className="linkText"
+                      >
                         Click here to see all inferences
                       </Link>
                     </p>
@@ -111,27 +119,37 @@ export const PatientXRay = () => {
               {data && (
                 <div className="ImageContainer">
                   {data.msg && <p className="name">{data.msg}</p>}
-                  {data.detections && data.detections.length
-                    ? data.detections.map((infections, key) => {
-                        return (
-                          <div key={key}>
-                            {infections.infection_types &&
-                            infections.infection_types.length ? (
-                              infections.infection_types.map(
-                                (infection, index) => (
-                                  <p key={index}>
-                                    Infection Type: {infection}, Confidence:{" "}
+                  {data.detections && data.detections.length ? (
+                    <div className="infectionsTable">
+                      <div className="tableRow">
+                        <div className="tableHeader">Infection Type</div>
+                        <div className="tableHeader">Confidence</div>
+                      </div>
+                      {data.detections.map((infections, key) => (
+                        <React.Fragment key={key}>
+                          {infections.infection_types &&
+                          infections.infection_types.length ? (
+                            infections.infection_types.map(
+                              (infection, index) => (
+                                <div className="tableRow" key={index}>
+                                  <div className="tableCell">{infection}</div>
+                                  <div className="tableCell">
                                     {infections.confidence[index]}
-                                  </p>
-                                )
+                                  </div>
+                                </div>
                               )
-                            ) : (
-                              <p>No infection types found.</p>
-                            )}
-                          </div>
-                        );
-                      })
-                    : null}
+                            )
+                          ) : (
+                            <div className="tableRow" key={key}>
+                              <div className="tableCell" colSpan="2">
+                                No infection types found.
+                              </div>
+                            </div>
+                          )}
+                        </React.Fragment>
+                      ))}
+                    </div>
+                  ) : null}
                   <img
                     src={imagebaseURL + "media/" + data.img_file}
                     className="image"
