@@ -31,7 +31,7 @@ const GetInferencedImages = () => {
               </div>
               <div className="ImageTableRow">
                 <div className="ImageTableHeader">Confidence</div>
-                <div>{image.confidence}</div>
+                <div>{image.confidence.toFixed(4)}</div>
               </div>
               <div className="ImageTableRow">
                 <div className="ImageTableHeader">Original Image</div>

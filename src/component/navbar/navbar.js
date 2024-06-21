@@ -12,7 +12,7 @@ function Navbar() {
   const signout = async () => {
     localStorage.removeItem("token");
     dispatch({ type: "auth/logout" });
-    history.pushState("/");
+    history.push("/");
   };
 
   const user = useSelector(

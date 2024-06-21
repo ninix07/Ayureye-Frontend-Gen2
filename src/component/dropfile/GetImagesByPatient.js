@@ -15,7 +15,14 @@ const GetImagesPatient = () => {
           ? data.map((image, key) => {
               return (
                 <div className="ImageContainer">
-                  <p className="name">{image.name}</p>
+                  <div className="ImageTableRow">
+                    <div className="ImageTableHeader">Name</div>
+                    <div>{image.name}</div>
+                  </div>
+                  <div className="ImageTableRow">
+                    <div className="ImageTableHeader">Patient</div>
+                    <div>{image.patient}</div>
+                  </div>
                   <img
                     src={imagebaseURL + image.img_file}
                     alt={key}
